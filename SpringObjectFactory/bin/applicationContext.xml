@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    
+    <!-- Package for beans (Classes) -->
+ 
+     <context:component-scan base-package="classes"/>
+     
+     <!-- Define your dependency -->
+     <bean id="FortuneTellerId" class="classes.FortuneTeller"/>
+     
+     <!-- Bean Or class : BaseBallCoach -->
+                                 <!-- packageName.ClassName -->
+     <bean id="BaseBallCoachId" class="classes.BaseBallCoach">
+         <!--Dependency injection by constructor , ref is ID of your dependency  -->
+         <constructor-arg ref="FortuneTellerId"></constructor-arg>
+     </bean>
+     
+    <!-- Bean Or class : HockeyCoach -->
+    
+     <bean id="HockeyCoachId" class="classes.HockeyCoach">
+        <constructor-arg ref="FortuneTellerId"></constructor-arg>
+     </bean>
+ 
+ </beans>
